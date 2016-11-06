@@ -27,3 +27,8 @@
 *.exe
 *.out
 *.app
+fileEncryptor
+
+# Temp files
+*.swp
+*.tmp
