@@ -5,12 +5,10 @@
 #include <vector>
 #include "Console.h"
 #include "Configurator.h"
+
 int main(int argc, char** argv){
   std::vector<std::string> arguments (argv + 1, argv + argc);
   Configurator& configurator = Configurator::getInstance();
-  Configurator::getInstance();
-  Configurator::getInstance();
-  Configurator::getInstance();
   try {
     if (argc == 1 ){
       throw std::invalid_argument("Не указаны обязательные аргументы");
@@ -56,6 +54,19 @@ int main(int argc, char** argv){
     Console::printHelp(std::cout);
     return 1;
   }
+
+  try {
+    configurator.doWork();
+  } catch (const std::invalid_argument& e){
+    std::cout<< e.what()<<std::endl;
+    Console::printHelp(std::cout);
+    
+  }catch (const std::exception& e) {
+    std::cout<< e.what()<<std::endl;
+    return 1;
+  } 
+
+
   return 0;
 }
 

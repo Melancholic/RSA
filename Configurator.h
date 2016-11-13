@@ -16,6 +16,10 @@ class Configurator {
   ~Configurator();
   Configurator(Configurator const&) = delete; 
   Configurator& operator= (Configurator const&) = delete;
+  static void throwArgumentsNotCorrectMsg(const std::string);
+  bool checkEncrypt();
+  bool checkDecrypt();
+  bool checkGenerate();
   public:
   static Configurator& getInstance();
   void setInputPath(const std::string);
@@ -26,5 +30,6 @@ class Configurator {
   const std::string getOutputPath();
   const std::string getPublicKeyPath();
   const Modes getMode();
+  void doWork();
 };
 #endif
