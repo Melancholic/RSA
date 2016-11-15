@@ -5,6 +5,7 @@
 #include <vector>
 #include "Console.h"
 #include "Configurator.h"
+#include "BigInteger.h"
 
 int main(int argc, char** argv){
   std::vector<std::string> arguments (argv + 1, argv + argc);
