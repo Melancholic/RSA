@@ -35,7 +35,7 @@ public:
   BigInteger pow(const unsigned int power);
   //returns A^d(mod m) 
   //A = *this
-  BigInteger calcPowMod(const std::vector <char> &d, const BigInteger m);
+  BigInteger calcPowMod(const std::vector <char> &d, const BigInteger m) const;
   void random(unsigned int length);
   // Тест на четность
   bool isEven();

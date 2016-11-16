@@ -4,15 +4,12 @@
 #include <fstream>
 #include <string>
 #include "BigInteger.h"
+#include <iostream>
 
-
-class KeyManager {
+struct CryptoKey {
   BigInteger a;
   BigInteger b;
-
-public: 
-  KeyManager(const BigInteger& a, const BigInteger& b);
-	bool loadFromFile(const std::string&);
+  bool loadFromFile(const std::string&);
 	bool saveToFile(const std::string&);
 
 };

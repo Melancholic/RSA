@@ -19,6 +19,7 @@ int main(int argc, char** argv){
         switch(Console::ARGUMENTS[curArg]){
           case Console::HELP_CODE: {
             Console::printHelp(std::cout);
+						return 0;
           } break;
           case Console::IN_FILE_CODE: {
             configurator.setInputPath(arguments.at(++i));
@@ -37,6 +38,9 @@ int main(int argc, char** argv){
           } break;
           case Console::PUBLIC_KEY_CODE: {
             configurator.setPublicKeyPath(arguments.at(++i));
+          } break;
+          case Console::PRIVATE_KEY_CODE: {
+            configurator.setPrivateKeyPath(arguments.at(++i));
           } break;
           default: {
             std::cout<< "Указан неизвестный аргумент \""<< curArg << "\"" << std::endl;

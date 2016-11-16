@@ -118,7 +118,7 @@ BigInteger BigInteger::pow(const unsigned int power) {
 
 
 //a^d(mod m) 
-BigInteger BigInteger::calcPowMod(const std::vector <char> &d, const BigInteger m) { 
+BigInteger BigInteger::calcPowMod(const std::vector <char> &d, const BigInteger m) const { 
   BigInteger res;
   res = *this;
 
