@@ -3,12 +3,12 @@
 #include <exception>
 #include <stdexcept>
 #include <vector>
-#include "Console.h"
+#include "Constants.h"
 
 Configurator::Configurator(){
-  this->setPublicKeyPath(Console::KEY_PATH + Console::PUB_KEY_FNAME);
-  this->setPrivateKeyPath(Console::KEY_PATH + Console::PRV_KEY_FNAME);
-  this->setOutputPath(Console::OUT_PATH + "sample.out");
+  this->setPublicKeyPath(Constants::KEY_PATH + Constants::PUB_KEY_FNAME);
+  this->setPrivateKeyPath(Constants::KEY_PATH + Constants::PRV_KEY_FNAME);
+  this->setOutputPath(Constants::OUT_PATH + "sample.out");
 }
 
 Configurator& Configurator::getInstance(){
@@ -22,7 +22,7 @@ Configurator::~Configurator(){
 
 void Configurator::setInputPath(const std::string path){
   this->inputPath = path;
-	this->setOutputPath(Console::OUT_PATH +  path.substr(path.find_last_of("/") + 1 )+".out");
+	this->setOutputPath(Constants::OUT_PATH +  path.substr(path.find_last_of("/") + 1 )+".out");
 }
 
 void Configurator::setOutputPath(const std::string path){
@@ -73,7 +73,7 @@ void Configurator::doWork(){
         Encryptor::encryptTxtFile(this->getInputPath(), this->getOutputPath(), publicKey);
         std::cout << "Зашифрованный файл успешно сохранен в \"" + this->getOutputPath() + "\"." << std::endl;
       } else {
-        Configurator::argumentError(Console::ENCRYPT_MODE_NAMEF);
+        Configurator::argumentError(Constants::ENCRYPT_MODE_NAMEF);
       }
     }; break;
     case DECRYPT: {
@@ -86,7 +86,7 @@ void Configurator::doWork(){
         Decryptor::decryptTxtFile(this->getInputPath(), this->getOutputPath(), privateKey);
         std::cout << "Дешифрованный файл успешно сохранен в \"" + this->getOutputPath() + "\"." << std::endl;
       } else {
-        Configurator::argumentError(Console::DECRYPT_MODE_NAMEF);
+        Configurator::argumentError(Constants::DECRYPT_MODE_NAMEF);
       }
     }; break;
     case GENERATE: {
@@ -99,7 +99,7 @@ void Configurator::doWork(){
         	std::cout << "Публичный ключ успешно сохранен в \""<< this->publicKeyPath <<"\"." << std::endl;
         	std::cout << "Приватный ключ успешно сохранен в \""<< this->privateKeyPath <<"\"." << std::endl;
 			} else {
-        Configurator::argumentError(Console::GENERATE_KEY_MODE_NAMEF);
+        Configurator::argumentError(Constants::GENERATE_KEY_MODE_NAMEF);
       }
     }; break;
 

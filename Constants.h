@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 
-namespace Console {
+namespace Constants {
   const std::string HELP_NAMEF  = "--help";
   const std::string HELP_NAMES = "-h";
   const std::string IN_FILE_NAMEF = "--in";

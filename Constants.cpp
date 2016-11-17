@@ -1,6 +1,6 @@
-#include "Console.h"
+#include "Constants.h"
 
-std::map<std::string, int> Console::ARGUMENTS = {
+std::map<std::string, int> Constants::ARGUMENTS = {
     {IN_FILE_NAMEF, IN_FILE_CODE},  
     {IN_FILE_NAMES, IN_FILE_CODE},  
     {OUT_FILE_NAMEF, OUT_FILE_CODE},  
@@ -17,7 +17,7 @@ std::map<std::string, int> Console::ARGUMENTS = {
     {HELP_NAMES, HELP_CODE}  
 };
 
-void Console::printHelp(std::ostream& ostream){
+void Constants::printHelp(std::ostream& ostream){
     ostream << std::endl;
     ostream << "fileEncryptor - простой шифратор файлов, поддерживающий дешифрование и генерацию ключей. Использует алгоритм RSA. " << std::endl;
     ostream <<  "Необходимые аргументы:" << std::endl;

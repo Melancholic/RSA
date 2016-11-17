@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include "Console.h"
+#include "Constants.h"
 #include "Configurator.h"
 #include "BigInteger.h"
 
@@ -16,35 +16,35 @@ int main(int argc, char** argv){
     } else {
       for(int i = 0; i < arguments.size(); ++i){
         std::string curArg = arguments.at(i);
-        switch(Console::ARGUMENTS[curArg]){
-          case Console::HELP_CODE: {
-            Console::printHelp(std::cout);
+        switch(Constants::ARGUMENTS[curArg]){
+          case Constants::HELP_CODE: {
+            Constants::printHelp(std::cout);
 						return 0;
           } break;
-          case Console::IN_FILE_CODE: {
+          case Constants::IN_FILE_CODE: {
             configurator.setInputPath(arguments.at(++i));
           } break;
-          case Console::OUT_FILE_CODE: {
+          case Constants::OUT_FILE_CODE: {
             configurator.setOutputPath(arguments.at(++i));
           } break;
-          case Console::ENCRYPT_MODE_CODE: {
+          case Constants::ENCRYPT_MODE_CODE: {
             configurator.setMode(Modes::ENCRYPT);
           } break;
-          case Console::DECRYPT_MODE_CODE: {
+          case Constants::DECRYPT_MODE_CODE: {
             configurator.setMode(Modes::DECRYPT);
           } break;
-          case Console::GENERATE_KEY_MODE_CODE: {
+          case Constants::GENERATE_KEY_MODE_CODE: {
             configurator.setMode(Modes::GENERATE);
           } break;
-          case Console::PUBLIC_KEY_CODE: {
+          case Constants::PUBLIC_KEY_CODE: {
             configurator.setPublicKeyPath(arguments.at(++i));
           } break;
-          case Console::PRIVATE_KEY_CODE: {
+          case Constants::PRIVATE_KEY_CODE: {
             configurator.setPrivateKeyPath(arguments.at(++i));
           } break;
           default: {
             std::cout<< "Указан неизвестный аргумент \""<< curArg << "\"" << std::endl;
-            Console::printHelp(std::cout);
+            Constants::printHelp(std::cout);
             return 1;
           }
         }
@@ -52,11 +52,11 @@ int main(int argc, char** argv){
     }
   } catch (const std::out_of_range& e) {
     std::cout << "Неправильно передан набор аргументов" << std::endl;
-    Console::printHelp(std::cout);
+    Constants::printHelp(std::cout);
     return 1;
   } catch (const std::exception& e) {
     std::cout<< e.what()<<std::endl;
-    Console::printHelp(std::cout);
+    Constants::printHelp(std::cout);
     return 1;
   }
 
@@ -64,7 +64,7 @@ int main(int argc, char** argv){
     configurator.doWork();
   } catch (const std::invalid_argument& e){
     std::cout<< e.what()<<std::endl;
-    Console::printHelp(std::cout);
+    Constants::printHelp(std::cout);
     
   }catch (const std::exception& e) {
     std::cout<< e.what()<<std::endl;
