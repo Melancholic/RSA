@@ -4,11 +4,11 @@
 #include <stdexcept>
 #include <vector>
 #include "Constants.h"
+#include "Helpers.h"
 
 Configurator::Configurator(){
   this->setPublicKeyPath(Constants::KEY_PATH + Constants::PUB_KEY_FNAME);
   this->setPrivateKeyPath(Constants::KEY_PATH + Constants::PRV_KEY_FNAME);
-  this->setOutputPath(Constants::OUT_PATH + "sample.out");
 }
 
 Configurator& Configurator::getInstance(){
@@ -22,7 +22,6 @@ Configurator::~Configurator(){
 
 void Configurator::setInputPath(const std::string path){
   this->inputPath = path;
-	this->setOutputPath(Constants::OUT_PATH +  path.substr(path.find_last_of("/") + 1 )+".out");
 }
 
 void Configurator::setOutputPath(const std::string path){
@@ -46,7 +45,17 @@ const std::string Configurator::getInputPath(){
 }
 
 const std::string Configurator::getOutputPath(){
-  return this->outputPath;
+  if (this->outputPath.empty()) {
+		if( this->mode == Modes::ENCRYPT) {
+			// ./out/encrypted-file.name
+			return Constants::OUT_PATH + Constants::ENCRYPT_PREFIX + '-' + Helpers::pullFileName(this->inputPath);
+		} else if( this->mode == Modes::DECRYPT) {
+			// ./out/decrypted-file.name
+			return Constants::OUT_PATH + Constants::DECRYPT_PREFIX + '-' + Helpers::pullFileName(this->inputPath);
+		}
+	}
+	// user/path/to/file.out
+	return this->outputPath;
 }
 
 const std::string Configurator::getPublicKeyPath(){
@@ -116,19 +125,20 @@ void Configurator::fileError(const std::string file){
 
 bool Configurator::checkEncrypt(){
   return this->mode == Modes::ENCRYPT &&
-    !this->inputPath.empty() &&
-    !this->outputPath.empty() &&
-    !this->publicKeyPath.empty();
+    !this->getInputPath().empty() &&
+    !this->getOutputPath().empty() &&
+    !this->getPublicKeyPath().empty();
 }
 
 bool Configurator::checkDecrypt(){
  std::cerr << this->inputPath <<std::endl;
  return this->mode == Modes::DECRYPT &&
-    !this->inputPath.empty() &&
-    !this->outputPath.empty() &&
-    !this->privateKeyPath.empty();
+    !this->getInputPath().empty() &&
+    !this->getOutputPath().empty() &&
+    !this->getPrivateKeyPath().empty();
 }
 bool Configurator::checkGenerate(){
   return this->mode == Modes::GENERATE &&
-    !this->publicKeyPath.empty();
+    !this->getPublicKeyPath().empty() &&
+    !this->getPrivateKeyPath().empty();
 }

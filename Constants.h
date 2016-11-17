@@ -1,5 +1,5 @@
-#ifndef CONSOLE_H
-#define CONSOLE_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #include <map>
 #include <string>
@@ -38,8 +38,9 @@ namespace Constants {
   const std::string PUB_KEY_FNAME = "key.pub";      
   const std::string PRV_KEY_FNAME = "key"; 
   
-  extern std::map<std::string, int> ARGUMENTS;
-  
-  extern void printHelp(std::ostream&);
+	const std::string ENCRYPT_PREFIX = "encrypted"; 
+  const std::string DECRYPT_PREFIX = "decrypted"; 
+ 
+	extern std::map<std::string, int> ARGUMENTS;  
 };
 #endif 

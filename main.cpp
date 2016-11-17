@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Constants.h"
+#include "Helpers.h"
 #include "Configurator.h"
 #include "BigInteger.h"
 
@@ -18,7 +19,7 @@ int main(int argc, char** argv){
         std::string curArg = arguments.at(i);
         switch(Constants::ARGUMENTS[curArg]){
           case Constants::HELP_CODE: {
-            Constants::printHelp(std::cout);
+            Helpers::printHelp(std::cout);
 						return 0;
           } break;
           case Constants::IN_FILE_CODE: {
@@ -44,7 +45,7 @@ int main(int argc, char** argv){
           } break;
           default: {
             std::cout<< "Указан неизвестный аргумент \""<< curArg << "\"" << std::endl;
-            Constants::printHelp(std::cout);
+            Helpers::printHelp(std::cout);
             return 1;
           }
         }
@@ -52,11 +53,11 @@ int main(int argc, char** argv){
     }
   } catch (const std::out_of_range& e) {
     std::cout << "Неправильно передан набор аргументов" << std::endl;
-    Constants::printHelp(std::cout);
+    Helpers::printHelp(std::cout);
     return 1;
   } catch (const std::exception& e) {
     std::cout<< e.what()<<std::endl;
-    Constants::printHelp(std::cout);
+    Helpers::printHelp(std::cout);
     return 1;
   }
 
@@ -64,7 +65,7 @@ int main(int argc, char** argv){
     configurator.doWork();
   } catch (const std::invalid_argument& e){
     std::cout<< e.what()<<std::endl;
-    Constants::printHelp(std::cout);
+    Helpers::printHelp(std::cout);
     
   }catch (const std::exception& e) {
     std::cout<< e.what()<<std::endl;
