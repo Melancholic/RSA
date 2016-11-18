@@ -2,19 +2,19 @@
 
 void Engine::genKeys(CryptoKey &pbkey, CryptoKey &prkey) {
   
-	BigInteger p(Engine::KEY_LENGTH/2);
-  BigInteger q(Engine::KEY_LENGTH/2);
-  BigInteger d(Engine::KEY_LENGTH-3);
+	BigInteger p(Constants::KEY_LENGTH/2);
+  BigInteger q(Constants::KEY_LENGTH/2);
+  BigInteger d(Constants::KEY_LENGTH-3);
   BigInteger n, eiler, diviser,e;
 
 	/**
  	*	Генерируем 2 простых числа p и q
  	**/
   while (!p.isPrime())
-    p.random(Engine::KEY_LENGTH/2);
+    p.random(Constants::KEY_LENGTH/2);
 
   while (!q.isPrime())
-    q.random(Engine::KEY_LENGTH/2);
+    q.random(Constants::KEY_LENGTH/2);
 
 	/**
  	*	Находим n - произведение p и q
@@ -31,7 +31,7 @@ void Engine::genKeys(CryptoKey &pbkey, CryptoKey &prkey) {
  	**/
   do {
     do {
-      d.random(Engine::KEY_LENGTH-3);
+      d.random(Constants::KEY_LENGTH-3);
       diviser = d. getMaxDiviser(eiler);
     } while ( diviser != 1);
     extEuclid(eiler, d, e);

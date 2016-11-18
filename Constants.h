@@ -31,7 +31,7 @@ namespace Constants {
   const unsigned int PRIVATE_KEY_CODE = 107;
  	
 	/**
- 	* Константы, определяюще расположение сущностей
+ 	* Константы, определяющие расположение сущностей
  	**/
   const std::string OUT_PATH = "./out/";           
   const std::string KEY_PATH = "./.keys/";           
@@ -40,6 +40,8 @@ namespace Constants {
   
 	const std::string ENCRYPT_PREFIX = "encrypted"; 
   const std::string DECRYPT_PREFIX = "decrypted"; 
+	
+	const unsigned KEY_LENGTH = 80;
  
 	extern std::map<std::string, int> ARGUMENTS;  
 };

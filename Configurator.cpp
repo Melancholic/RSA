@@ -79,7 +79,8 @@ void Configurator::doWork(){
           fileError(this->getPublicKeyPath());
 				}
         std::cout << "Идет процесс шифрования файла \"" + this->getInputPath() + "\"..." << std::endl;
-        Encryptor::encryptTxtFile(this->getInputPath(), this->getOutputPath(), publicKey);
+         Encryptor::encryptTxtFile(this->getInputPath(), this->getOutputPath(), publicKey);
+        // Encryptor::encryptBinFile(this->getInputPath(), this->getOutputPath(), publicKey);
         std::cout << "Зашифрованный файл успешно сохранен в \"" + this->getOutputPath() + "\"." << std::endl;
       } else {
         Configurator::argumentError(Constants::ENCRYPT_MODE_NAMEF);
@@ -92,7 +93,8 @@ void Configurator::doWork(){
             fileError(this->getPrivateKeyPath());
 				}
         std::cout << "Идет процесс дешифрования файла \"" + this->getInputPath() + "\"..." << std::endl;
-        Decryptor::decryptTxtFile(this->getInputPath(), this->getOutputPath(), privateKey);
+         Decryptor::decryptTxtFile(this->getInputPath(), this->getOutputPath(), privateKey);
+       // Decryptor::decryptBinFile(this->getInputPath(), this->getOutputPath(), privateKey);
         std::cout << "Дешифрованный файл успешно сохранен в \"" + this->getOutputPath() + "\"." << std::endl;
       } else {
         Configurator::argumentError(Constants::DECRYPT_MODE_NAMEF);

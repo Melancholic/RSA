@@ -12,7 +12,7 @@ CryptoKey.o: BigInteger.o
 	g++ -std=c++11 -c CryptoKey.cpp  
 BigInteger.o:
 	g++ -std=c++11 -c BigInteger.cpp  
-Engine.o: CryptoKey.o
+Engine.o: Constants.o CryptoKey.o
 	g++ -std=c++11 -c Engine.cpp  
 Encryptor.o: CryptoKey.o
 	g++ -std=c++11 -c Encryptor.cpp  

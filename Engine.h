@@ -3,13 +3,13 @@
 
 #include <fstream>
 #include <stdexcept>
+#include "Constants.h"
 #include "CryptoKey.h"
 #include "BigInteger.h"
 
 class Engine {
 	void static extEuclid (BigInteger&, BigInteger&, BigInteger& );
 public:
-	const static unsigned KEY_LENGTH = 80;
   void static genKeys(CryptoKey&, CryptoKey& );
 };
 

@@ -857,7 +857,7 @@ std::istream& operator>>(std::istream &in, BigInteger &obj) {
         i++;
       }
       else {
-        throw std::overflow_error("input data format is incorrect");
+        throw std::overflow_error("Входные данные неккоректны");
       }
     }
   } 
@@ -939,7 +939,7 @@ void BigInteger::random(unsigned int length) {
     positive = true;
   }
   else {
-    throw std::overflow_error("specified size exceeds the maximum capacity of the object");
+    throw std::overflow_error("Требуемый размер превышает максимально допустимый для данного объекта.");
   }
 }
 

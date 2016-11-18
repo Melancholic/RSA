@@ -32,3 +32,8 @@ fileEncryptor
 # Temp files
 *.swp
 *.tmp
+
+# System directories
+out/*
+.keys/*
+

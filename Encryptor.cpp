@@ -4,7 +4,7 @@ BigInteger Encryptor::encrypt(const std::string &data, const std::vector<char>  
   BigInteger block;
   block = 1;
   
-  if (data.length() > (Engine::KEY_LENGTH-4)/3) {
+  if (data.length() > (Constants::KEY_LENGTH-4)/3) {
     throw std::logic_error("Размер прочитанного файла превышает допустимый размер.");
 	}
 
@@ -40,7 +40,7 @@ void Encryptor::encryptTxtFile(const std::string& in, const std::string& out, Cr
   while (!input.eof()) {
     buff.clear();
 
-    for (int i = 0; i < (Engine::KEY_LENGTH-4)/3; ++i) {
+    for (int i = 0; i < (Constants::KEY_LENGTH-4)/3; ++i) {
       char bf = input.get();
       if (input.eof()) break;
       buff += bf;
@@ -54,5 +54,34 @@ void Encryptor::encryptTxtFile(const std::string& in, const std::string& out, Cr
 
   input.close();
   output.close();
+}
+
+// TODO
+void Encryptor::encryptBinFile(const std::string& in, const std::string& out, CryptoKey &key) {
+//	char* buffer;
+//  const unsigned BLOCK_SIZE = (Constants::KEY_LENGTH-4)/3;
+//	std::vector <char> a = key.a.toBinary();
+//	std::stringstream ssbuffer;
+//  std::ifstream input (in, std::ios::binary);
+//  if (!input.good()) {
+//    throw std::logic_error("Невозможно открыть файл \""+in+"\" для чтения.");
+//  }
+//
+//  std::ofstream output (out, std::ios::binary);
+//  if (!output.good()) {
+//    throw std::logic_error("Невозможно записать файл \""+out+"\".");
+//  }
+//		
+//	while (!input.eof() ) {
+//		buffer = new char [BLOCK_SIZE];
+//		input.read(buffer, BLOCK_SIZE);
+//		ssbuffer << encrypt(buffer, a, key.b);	
+//		output.write(ssbuffer.str().c_str(), ssbuffer.str().size());
+//		ssbuffer.str("");
+//		delete[] buffer;
+//	}
+//  
+//	input.close();
+//  output.close();
 }
 
